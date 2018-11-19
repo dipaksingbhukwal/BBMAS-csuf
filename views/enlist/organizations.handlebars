@@ -1,0 +1,21 @@
+<h3>Below are organizations associated with us:</h3>
+<div class="row">
+  {{#each users}}
+    <div class="col s12 m4">
+      <div class="card">
+        <div class="card-content center-left">
+          <h5>{{name}}</h5>
+          <br>
+          <p><b>Email: </b>{{email}}</p>
+          <p><b>Address: </b>{{address}}</p>
+          <p><b>Website: </b><a href="{{website}}">{{website}}</a></p>
+          <p><b>Contact No: </b>{{contactno}}</p>
+          <p><b>Fax: </b>{{fax}}</p>
+        </div>
+      </div>
+    </div>
+
+  {{else}}
+    <p>No stories found</p>
+  {{/each}}
+</div>
