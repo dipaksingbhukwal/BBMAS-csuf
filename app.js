@@ -105,6 +105,6 @@ app.use('/organizations', organizations);
 // Setting port
 const port = process.env.PORT || 5000;
 
-app.listen(port, () => {
+app.listen(process.env.PORT || 5000, () => {
   console.log(`Server started on port ${port}`)
 });
