@@ -10,6 +10,8 @@ const mongoose = require('mongoose');
 
 const app = express();
 
+// console.log(process.env);
+
 // Load routes
 const inventories = require('./routes/inventories');
 const users = require('./routes/users');
@@ -18,17 +20,17 @@ const organizations = require('./routes/organizations');
 // Passport Config
 require('./config/passport')(passport);
 
-// Setting port
-const port = process.env.PORT || 5000;
 
-// DB Config
-var db = null;
-if(port == 5000){
-  db= require('./config/database');
-}else {
-  db = require('./config/database_prod');
-}
+// // DB Config
+// var db = null;
+// if(port != 5000){
+//   db= require('./config/database');
+// }else {
+//   db = require('./config/database_prod');
+// }
 
+const db = require('./config/database');
+console.log(db);
 
 // Map global promise - get rid of warning
 mongoose.Promise = global.Promise;
@@ -100,7 +102,8 @@ app.use('/inventories', inventories);
 app.use('/users', users);
 app.use('/organizations', organizations);
 
-
+// Setting port
+const port = process.env.PORT || 5000;
 
 app.listen(port, () => {
   console.log(`Server started on port ${port}`)
