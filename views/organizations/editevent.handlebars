@@ -1,0 +1,48 @@
+<script>
+  function myFunction() {
+    var date = document.getElementById("date").value;
+    var varDate = new Date(date); //dd-mm-YYYY
+    var today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    if (varDate < today) {
+      alert("Select Future Date");
+    }
+
+    document.getElementById("myFrame").onload = function() {
+      areaFunction()
+    };
+
+    function areaFunction() {
+      document.getElementById("description").value = {
+        {
+          event.description
+        }
+      };
+    }
+  }
+</script>
+<form id="myFrame" class="" action="/organizations/editevent/{{event.id}}?_method=PUT" method="post">
+  <input type="hidden" name="_method" value="PUT">
+  <div class="form-group">
+    <label for="eventname">Event Name</label>
+    <input type="text" name="eventname" class="form-control" value="{{event.eventname}}" required>
+  </div>
+  <div class="form-group">
+    <label for="location">Location</label>
+    <input type="text" name="location" class="form-control" value="{{event.location}}" required>
+  </div>
+  <div class="form-group">
+    <label for="contactno">Contact No</label>
+    <input type="text" name="contactno" class="form-control" value="{{event.contactno}}" required>
+  </div>
+  <div class="form-group">
+    <label for="date">Date</label>
+    <input type="date" name="date" id="date" class="form-control" onchange="myFunction()" value="{{event.date}}" required>
+  </div>
+  <div class="form-group">
+    <label for="description">Event Description</label>
+    <textarea id="description" name="description" rows="5" cols="80" class="form-control"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

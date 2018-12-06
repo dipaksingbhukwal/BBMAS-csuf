@@ -7,6 +7,10 @@ const {ensureAuthenticated} = require('../helpers/auth'); //Incude 'ensureAuthen
 
 module.exports = router;
 
+// Load Inventory Model
+require('../models/Event');
+const Event = mongoose.model('events');
+
 // Load Idea Model
 require('../models/User');
 const User = mongoose.model('users');
@@ -142,3 +146,17 @@ router.get('/logout', (req,res) =>{
   req.flash('success_msg', 'You are logged out');
   res.redirect('/users/login');
 })
+
+
+//Edit myevents
+router.get('/myevents', ensureAuthenticated, (req, res) => {
+  Event.find({organizedby: req.user.name})
+    .sort({
+      date: 'desc'
+    })
+    .then(events => {
+      res.render('users/myevents', {
+        events: events
+      });
+    });
+});

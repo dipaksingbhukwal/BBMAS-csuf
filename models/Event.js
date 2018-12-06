@@ -8,8 +8,9 @@ const EventSchema = new Schema({
     required: true
   },
   organizedby: {
-    type: Schema.Types.ObjectId,
-    ref: 'users'
+    type: String,
+    // ref: 'users',
+    required: true
   },
   location: {
     type: String,
@@ -22,6 +23,15 @@ const EventSchema = new Schema({
   date: {
     type: Date,
     default: Date.now
+  },
+  description: {
+    type: String,
+    require: false
+  },
+  status: {
+    type: String,
+    default: 'upcoming',
+    requir: true
   }
 });
 

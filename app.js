@@ -15,6 +15,12 @@ const inventories = require('./routes/inventories');
 const users = require('./routes/users');
 const organizations = require('./routes/organizations');
 
+// Setting port
+const port = process.env.PORT || 5000;
+
+// Load Keys
+const keys = require('./config/keys');
+
 // Passport Config
 require('./config/passport')(passport);
 // DB Config
@@ -27,7 +33,7 @@ mongoose.Promise = global.Promise;
 mongoose.connect(db.mongoURI, {
     useNewUrlParser: true
   })
-  .then(() => console.log('MongoDB Connected...'))
+  .then(() => console.log('MongoDB Connected...\n'+db.mongoURI))
   .catch(err => console.log(err));
 
 
@@ -85,17 +91,13 @@ app.get('/about', (req, res) => {
   res.render('about');
 });
 
-
-
-
-
 //User routes
 app.use('/inventories', inventories);
 app.use('/users', users);
 app.use('/organizations', organizations);
 
-const port = process.env.PORT || 5000;
+
 
 app.listen(port, () => {
-  console.log(`Server started on port ${port}`);
+  console.log(`Server started on port ${port}`)
 });

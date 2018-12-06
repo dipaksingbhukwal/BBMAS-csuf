@@ -1,0 +1,39 @@
+{{#if events}}
+
+    <a class="btn btn-danger" href="/organizations/addevent" role="button" style="float:right">Add new event here</a>
+    <h3 style="margin-bottom: 25px; font-family: Arial" class="font-weight-bold">Upcoming events:</h3>
+  <br>
+
+
+  {{#each events}}
+    <div class="card mb-2">
+      <h5 class="card-header" style="background: #f5b7b1 ">{{eventname}}</h5>
+      <div class="card-body" style="background: #f2f3f4 ">
+        <table style="align:top">
+          <tr valign="top">
+            <td width = "13%"><b>Address:&nbsp</b></td>
+            <td>{{location}}</td>
+          </tr>
+          <tr valign="top">
+            <td><b>Organized by:&nbsp</b></td>
+            <td>{{organizedby}}</td>
+          </tr>
+          <tr valign="top">
+            <td><b>Contact No:&nbsp</b></td>
+            <td>{{contactno}}</td>
+          </tr>
+          <tr valign="top">
+            <td><b>Date:&nbsp</b></td>
+            <td>{{date}}</td>
+          </tr>
+          <tr valign="top">
+            <td><b>Description:&nbsp</b></td>
+            <td>{{description}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  {{/each}}
+{{else}}
+  <h5 style="margin-bottom: 25px; font-family: Arial" class="font-weight-bold">No Event regisrered</h5>
+{{/if}}
