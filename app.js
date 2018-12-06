@@ -15,16 +15,20 @@ const inventories = require('./routes/inventories');
 const users = require('./routes/users');
 const organizations = require('./routes/organizations');
 
+// Passport Config
+require('./config/passport')(passport);
+
 // Setting port
 const port = process.env.PORT || 5000;
 
-// Load Keys
-const keys = require('./config/keys');
-
-// Passport Config
-require('./config/passport')(passport);
 // DB Config
-const db = require('./config/database');
+var db = null;
+if(port == 5000){
+  db= require('./config/database');
+}else {
+  db = require('./config/database_prod');
+}
+
 
 // Map global promise - get rid of warning
 mongoose.Promise = global.Promise;
