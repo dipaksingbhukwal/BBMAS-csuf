@@ -1,7 +1,7 @@
 {
   "name": "BBMAS",
   "version": "1.0.0",
-  "description": "\"App to create video ideas\"",
+  "description": "\"App to maintain Blood Bank Inventory\"",
   "main": "app.js",
   "scripts": {
     "start": "node app.js"

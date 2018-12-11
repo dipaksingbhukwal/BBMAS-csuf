@@ -10,8 +10,6 @@ const mongoose = require('mongoose');
 
 const app = express();
 
-// console.log(process.env);
-
 // Load routes
 const inventories = require('./routes/inventories');
 const users = require('./routes/users');
@@ -19,15 +17,6 @@ const organizations = require('./routes/organizations');
 
 // Passport Config
 require('./config/passport')(passport);
-
-
-// // DB Config
-// var db = null;
-// if(port != 5000){
-//   db= require('./config/database');
-// }else {
-//   db = require('./config/database_prod');
-// }
 
 const db = require('./config/database');
 console.log(db);
@@ -82,8 +71,6 @@ app.use(function(req, res, next){
   next();
 });
 
-
-
 // Index Route
 app.get('/', (req, res) => {
   const title = 'Welcome';
@@ -101,6 +88,11 @@ app.get('/about', (req, res) => {
 app.use('/inventories', inventories);
 app.use('/users', users);
 app.use('/organizations', organizations);
+
+
+// Checking validity of events
+require('./models/Event');
+const Event = mongoose.model('events');
 
 // Setting port
 const port = process.env.PORT || 5000;

@@ -1,4 +1,54 @@
 .logo{
-  width: 130px;
+  width: 100%;
+  height: 100px !important;
   margin: auto;
 }
+.rounded{
+  height: 200px;
+}
+
+.carousel-indicators{
+margin-bottom: 0% !important;
+}
+.carousel-indicators li{
+background-color: black;
+min-height: 5px;
+}
+
+.carousel-control-next-icon{
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23f00' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
+}
+.carousel-control-prev-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23f00' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
+}
+#card_index
+{
+  width: 270px !important;
+  height: 170px !important;
+}
+#col_org{
+  margin-top: 20px !important;
+}
+.mainbox1{
+  border: 1px solid;
+  border-radius: 4px;
+}
+.mainbox1 img{
+  max-width: 50%;
+}
+.mainbox1 h3{
+  margin-left: 40% !important;
+}
+#acc_info{
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+#per_info{
+  margin-right: 10px;
+}
+#sub_button{
+  width: 200px !important;
+  margin-left: 85%;
+  margin-bottom: 20px;
+}
+#ba{

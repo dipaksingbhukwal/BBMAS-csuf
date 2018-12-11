@@ -72,6 +72,7 @@ router.post('/addevent', ensureAuthenticated, (req, res) => {
 
 // List events GET
 router.get('/events', (req, res) =>{
+  eventStatusUpdate();
   Event.find({status:'upcoming'})
     .sort({
       date: 'desc'
@@ -129,3 +130,21 @@ router.delete('/deleteevent/:id', ensureAuthenticated, (req, res) => {
       res.redirect('/users/myevents');
     });
 });
+
+// Update Event Status
+function eventStatusUpdate(){
+  Event.find()
+    .then(events => {
+      // console.log(events);
+      var curDate = new Date();
+      console.log(curDate);
+      for (var i = 0; i < events.length; i++) {
+        var eventDate = new Date(events[i].date);
+        if ((eventDate-curDate)<0) {
+          console.log(events[i]);
+          events[i].status='passed';
+          events[i].save()
+        }
+      }
+    });
+}
